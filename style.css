@@ -16,6 +16,7 @@ img:hover {
   transform: rotate(-3600deg);
 }
 i{
+  font-size: 10rem;
   transition: transform .7s ease-in-out;
 }
 
