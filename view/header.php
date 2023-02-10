@@ -12,7 +12,7 @@
     <link href="./assets/fontawesome-free-6.2.1-web//css/brands.css" rel="stylesheet" />
     <link href="./assets/fontawesome-free-6.2.1-web/css/solid.css" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/bootstrap-4.3.1-dist/css/bootstrap.min.css" />
-    <title>Lorenz Hankels HTML Test Spielwiese</title>
+    <title>HTML Bullshit :)</title>
 </head>
 
 <body>

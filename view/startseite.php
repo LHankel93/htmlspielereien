@@ -2,7 +2,7 @@
 <div class="link_container">
     <ul>
         <li><a class="btn btn-primary" href="./index.php?site=gitpull&dew=it">Git Pull ausführen</a></li>
-        <li><a class="btn btn-danger" href="./index.php?site=gitpush&dew=it">Git Pull ausführen</a></li>
+        <li><a class="btn btn-danger" href="./index.php?site=gitpush&dew=it">Git Push ausführen</a></li>
     </ul>
 </div>
 <div class="container_test_post_links">
@@ -16,6 +16,13 @@
 <div class="container_test_python_skript">
     <p>Hier wird ein Python Skript angesprochen und der Input Wert +1 gerechnet.</p>
     <form id="startseite_form_python" action="./view/test_python.php" method="get" aria-label="Python in PHP aufrufen." aria-description="Form um ein Python Skript zu testen">
+        <input type="number" name="foo" value="1" />
+        <input type="submit" name="bar" value="submit" />
+    </form>
+</div>
+<div class="container_test_python_skript">
+    <p>Hier wird ein Integer zum Binär-Zahlensystem umgewandelt.</p>
+    <form id="startseite_form_python_int2bin" action="./view/test_python.php" method="get" aria-label="Python in PHP aufrufen." aria-description="Form um ein Python Skript auszuführen.">
         <input type="number" name="foo" value="1" />
         <input type="submit" name="bar" value="submit" />
     </form>
