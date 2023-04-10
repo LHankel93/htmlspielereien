@@ -7,7 +7,7 @@
 </div>
 <div class="container_test_post_links">
     <ul>
-        <form id="startseite_form" action="./view/test_post.php" method="post" aria-label="Web-API Links" aria-description="Form mit Buttons als Links zu den einzelnen Funktionen der Web-API">
+        <form id="startseite_form" action="./view/pythonwrapper.php" method="post" aria-label="Web-API Links" aria-description="Form mit Buttons als Links zu den einzelnen Funktionen der Web-API">
             <li><input class="btn btn-primary" type="submit" name="foo" value="Button 1 gedrückt" /></li>
             <li><input class="btn btn-primary" type="submit" name="foo" value="Button 2 gedrückt" /></li>
         </form>
@@ -15,7 +15,7 @@
 </div>
 <div class="container_test_python_skript">
     <p>Hier wird ein Python Skript angesprochen und der Input Wert +1 gerechnet.</p>
-    <form id="startseite_form_python" action="./view/test_python.php" method="get" aria-label="Python in PHP aufrufen." aria-description="Form um ein Python Skript zu testen">
+    <form id="startseite_form_python" action="./view/pythonwrapper.php" method="get" aria-label="Python in PHP aufrufen." aria-description="Form um ein Python Skript zu testen">
         <input type="number" name="value" value="1" />
         <input type="submit" name="operation" value="add1" />
     </form>
