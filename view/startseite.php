@@ -16,15 +16,15 @@
 <div class="container_test_python_skript">
     <p>Hier wird ein Python Skript angesprochen und der Input Wert +1 gerechnet.</p>
     <form id="startseite_form_python" action="./view/test_python.php" method="get" aria-label="Python in PHP aufrufen." aria-description="Form um ein Python Skript zu testen">
-        <input type="number" name="foo" value="1" />
-        <input type="submit" name="bar" value="submit" />
+        <input type="number" name="value" value="1" />
+        <input type="submit" name="operation" value="add1" />
     </form>
 </div>
 <div class="container_test_python_skript">
     <p>Hier wird ein Integer zum Binär-Zahlensystem umgewandelt.</p>
     <form id="startseite_form_python_int2bin" action="./view/test_python.php" method="get" aria-label="Python in PHP aufrufen." aria-description="Form um ein Python Skript auszuführen.">
-        <input type="number" name="foo" value="1" />
-        <input type="submit" name="bar" value="submit" />
+        <input type="number" name="value" value="1" />
+        <input type="submit" name="operation" value="dec2bin" />
     </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

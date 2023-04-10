@@ -22,5 +22,5 @@ for i in range(anzahlStellen):
     input = int(input / 2)
 
 for x in zahlen:
-    print(x, end = "")
+    print(x, end="")
     pass
