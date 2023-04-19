@@ -47,8 +47,10 @@ try:
         print(i)
     cursor.close()
     conn.close()
+    exit(0)
 except Exception as e:
     logging.error(traceback.format_exc())
     cursor.close()
     conn.close()
+    exit(1)
     # Logs the error appropriately.
