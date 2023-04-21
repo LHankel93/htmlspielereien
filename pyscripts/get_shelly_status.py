@@ -20,14 +20,20 @@ try:
     response = requests.get(link)
 
     # json in response parsen in einzelne Werte
-    device_id = 1
+    # device_id = 1
     timestamp = datetime.datetime.now()
-    json_body: str = response.json()["wifi_sta"]
+    json_body_wifi: str = response.json()["wifi_sta"]
+
+    json_body = response.json()
+    device_id = json_body["mac"]
+
+    # print(json_body["mac"])
+
     # TODO: additionally get the actual device ID from the API to save in the DB
 
     sql = """INSERT INTO wifi_sta_hist (device_id, timestamp, connected, ssid, ip, rssi) VALUES (%s, %s, %s, %s, %s, %s)"""
-    vals = (device_id, timestamp, json_body["connected"],
-            json_body["ssid"], json_body["ip"], json_body["rssi"])
+    vals = (device_id, timestamp, json_body_wifi["connected"],
+            json_body_wifi["ssid"], json_body_wifi["ip"], json_body_wifi["rssi"])
     cursor.execute(sql, vals)
     conn.commit()
     print(cursor.rowcount, "rows inserted.")
