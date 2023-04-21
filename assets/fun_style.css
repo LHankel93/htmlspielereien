@@ -1,0 +1,44 @@
+img {
+  transition: transform .7s ease-in-out;
+  position: relative;
+  right: 0%;
+}
+
+img:hover {
+  transform: rotate(3600deg);
+  transform: rotate3d(1, 1, 1, 450deg);
+  right: -50%;
+  transform: scale3d(0.3, 5.4, 2.3);
+}
+
+.alert,
+alert-primary {
+  -webkit-transition: transform .7s ease-in-out;
+  -moz-transition: transform .7s ease-in-out;
+  -o-transition: transform .7s ease-in-out;
+  transition: transform .7s ease-in-out;
+  -webkit-transition: background-color 2s ease-in-out;
+  -moz-transition: background-color 2s ease-in-out;
+  -o-transition: background-color 2s ease-in-out;
+  transition: background-color 2s ease-in-out;
+  -webkit-transition: color 2s ease-in-out;
+  -moz-transition: color 2s ease-in-out;
+  -o-transition: color 2s ease-in-out;
+  transition: color 2s ease-in-out;
+}
+
+.alert:hover,
+alert-primary:hover {
+  transform: rotate(-3600deg);
+  background-color: green;
+  color: white;
+}
+
+i {
+  font-size: 10rem;
+  transition: transform .7s ease-in-out;
+}
+
+i:hover {
+  transform: rotate3d(1, 1, 1, 45deg);
+}
