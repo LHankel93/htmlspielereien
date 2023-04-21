@@ -29,14 +29,16 @@ try:
 
     # print(json_body["mac"])
 
-    # TODO: additionally get the actual device ID from the API to save in the DB
-
-    sql = """INSERT INTO wifi_sta_hist (device_id, timestamp, connected, ssid, ip, rssi) VALUES (%s, %s, %s, %s, %s, %s)"""
-    vals = (device_id, timestamp, json_body_wifi["connected"],
-            json_body_wifi["ssid"], json_body_wifi["ip"], json_body_wifi["rssi"])
-    cursor.execute(sql, vals)
-    conn.commit()
-    print(cursor.rowcount, "rows inserted.")
+    # Beispiel: cur.execute("INSERT INTO employees (first_name,last_name) VALUES (?, ?)", ("Maria","DB"))
+    try:
+        sql = "INSERT INTO wifi_sta_hist (device_id, timestamp, connected, ssid, ip, rssi) VALUES (?, ?, ?, ?, ?, ?)"
+        vals = (device_id, timestamp, json_body_wifi["connected"],
+                json_body_wifi["ssid"], json_body_wifi["ip"], json_body_wifi["rssi"])
+        cursor.execute(sql, vals)
+        conn.commit()
+        print(cursor.rowcount, "rows inserted.")
+    except mariadb.Error as e:
+        print(f"Error: {e}")
 
     # print(response.status_code)
     # print(response.headers)
@@ -56,6 +58,7 @@ try:
     exit(0)
 except Exception as e:
     logging.error(traceback.format_exc())
+    print(f"Error: {e}")
     cursor.close()
     conn.close()
     exit(1)
