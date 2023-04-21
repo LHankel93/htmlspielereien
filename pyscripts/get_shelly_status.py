@@ -20,7 +20,6 @@ try:
     response = requests.get(link)
 
     # json in response parsen in einzelne Werte
-    # device_id = 1
     timestamp = datetime.datetime.now()
     json_body_wifi: str = response.json()["wifi_sta"]
 
