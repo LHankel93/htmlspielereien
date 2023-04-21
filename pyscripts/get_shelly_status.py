@@ -2,6 +2,7 @@ import traceback
 import logging
 import pandas as pd
 import requests
+from requests import ConnectTimeout
 import datetime
 # import json
 import mariadb
@@ -15,9 +16,33 @@ try:
     cursor = conn.cursor(named_tuple=True)
     cursor.execute("SET NAMES utf8")
     cursor.execute("USE shelly_status")
+    # fill variables for the insert
+    ip = "192.168.178.12"
+    link = "http://"+ip+"/status"
+    timestamp = datetime.datetime.now()
 
-    link = "http://192.168.178.12/status"
-    response = requests.get(link)
+    try:
+        response = requests.get(link, timeout=3)
+        # json in response parsen in einzelne Werte
+        timestamp = datetime.datetime.now()
+        json_body_wifi: str = response.json()["wifi_sta"]
+
+        json_body = response.json()
+        device_id = json_body["mac"]
+
+        # DEBUG:
+        # print(json_body["mac"])
+
+        # Beispiel: cur.execute("INSERT INTO employees (first_name,last_name) VALUES (?, ?)", ("Maria","DB"))
+        try:
+            sql = "INSERT INTO wifi_sta_hist (device_id, timestamp, connected, ssid, ip, rssi) VALUES (?, ?, ?, ?, ?, ?)"
+            vals = (device_id, timestamp, json_body_wifi["connected"],
+                    json_body_wifi["ssid"], json_body_wifi["ip"], json_body_wifi["rssi"])
+            cursor.execute(sql, vals)
+            conn.commit()
+            print(cursor.rowcount, "rows inserted.")
+        except mariadb.Error as e:
+            print(f"Error: {e}")
 
     # json in response parsen in einzelne Werte
     timestamp = datetime.datetime.now()
@@ -26,18 +51,10 @@ try:
     json_body = response.json()
     device_id = json_body["mac"]
 
+    # DEBUG:
     # print(json_body["mac"])
 
     # Beispiel: cur.execute("INSERT INTO employees (first_name,last_name) VALUES (?, ?)", ("Maria","DB"))
-    try:
-        sql = "INSERT INTO wifi_sta_hist (device_id, timestamp, connected, ssid, ip, rssi) VALUES (?, ?, ?, ?, ?, ?)"
-        vals = (device_id, timestamp, json_body_wifi["connected"],
-                json_body_wifi["ssid"], json_body_wifi["ip"], json_body_wifi["rssi"])
-        cursor.execute(sql, vals)
-        conn.commit()
-        print(cursor.rowcount, "rows inserted.")
-    except mariadb.Error as e:
-        print(f"Error: {e}")
 
     # print(response.status_code)
     # print(response.headers)
