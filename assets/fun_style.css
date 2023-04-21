@@ -13,13 +13,16 @@ img:hover {
 
 .alert,
 alert-primary {
-  transition: transform 2s ease-in-out;
-  transition: background-color 2s ease-in-out;
-  transition: color 2s ease-in-out;
+  /*transition: transform 2s ease-in-out;*/
+  /* left: 0%; */
+  transition: background-color, color, transform 2s ease-in-out;
+  /* transition: color 2s ease-in-out; */
 }
 
 .alert:hover,
 alert-primary:hover {
+  /* left: -50%; */
+  transform: skewX(-50%);
   transform: rotate(-3600deg);
   background-color: green;
   color: white;
