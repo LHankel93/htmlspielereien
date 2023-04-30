@@ -4,6 +4,10 @@ gource --multi-sampling -1920x1080 -stop-position 1.0 --auto-skip-seconds 0.5 --
 Skript für E470 Laptop:
 gource --multi-sampling -1920x1080 -stop-position 1.0 --auto-skip-seconds 0.5 --max-file-lag 4 --title "Lorenz Hankel HTML/PHP/Python Spielereien" --highlight-all-users --bloom-multiplier 0.4 --bloom-intensity 0.6 --highlight-all-users --hide mouse,filenames,dirnames --seconds-per-day 3 --output-framerate 60 --output-ppm-stream output.ppm && ffmpeg -y -hwaccel_output_format cuda -i output.ppm -r 60 output.mp4 && del output.ppm
 
+
+Skript für Desktop mit AMD GPU
+gource --multi-sampling -1920x1080 -stop-position 1.0 --auto-skip-seconds 0.5 --max-file-lag 4 --title "Lorenz Hankel HTML/PHP/Python Spielereien" --highlight-all-users --bloom-multiplier 0.4 --bloom-intensity 0.6 --highlight-all-users --hide mouse,filenames,dirnames --seconds-per-day 3 --output-framerate 60 --output-ppm-stream output.ppm && ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i output.ppm -r 60 -vcodec hevc_amf -preset slow -tune animation -crf 10 -threads 0 -q:a 0 output.mp4 && del output.ppm
+
 ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i output.ppm -r 60 -vcodec h264 -preset slow -tune animation -crf 8 -threads 0 -q:a 0 out.mp4
 
 vcodec=hevc_amf alternativ für h.265
