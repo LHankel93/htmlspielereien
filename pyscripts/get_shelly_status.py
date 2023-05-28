@@ -22,7 +22,7 @@ try:
     cursor.execute("SET NAMES utf8")
     cursor.execute("USE shelly_status")
     # fill variables for the insert
-    ip = "192.168.178.12" # 192.168.178.12 my 3d printer ip
+    ip = "192.168.178.12"  # 192.168.178.12 my 3d printer ip
     link = "http://"+ip+"/status"
     timestamp = datetime.datetime.now()
     # device_id = 1
@@ -59,10 +59,10 @@ try:
             print(f"Error: {e}")
     except requests.ConnectionError as e:
         # Data could not be retrieved, aka Device is likely disconnected from the network.
-        # I want to insert data into the DB that corresponds with that status
+        # I want to insert data into the DB that represents that status
         # aka device_id (MAC-address) has to be queried from the DB with the last known IP.
         # column "connected" = 0; SSID = last known SSID; IP = already known from the request; RSSI = -128 (lowest possible value for TINYINT 127)
-        print("oh no.")
+        print("oh no. The device under the IP " + ip + " is not answering.")
         print(f"Error: {e}")
         sql = "SELECT device_id, ssid FROM wifi_sta_hist WHERE ip = ? AND id = (SELECT id FROM wifi_sta_hist WHERE ip = ? ORDER BY id DESC LIMIT 1 ) ORDER BY id ASC"
         vals = (ip, ip)
@@ -80,7 +80,8 @@ try:
             vals = (device_id_off, timestamp, False, ssid_off, ip, -128)
             cursor.execute(sql, vals)
         except mariadb.Error as e:
-            print("Fehler beim Einfügen von Fake Daten.")
+            print(
+                "Encountered an error while trying to insert the fake data into the DB.")
             print(f"Error: {e}")
     except requests.JSONDecodeError as e:
         print(f"Error: {e}")
