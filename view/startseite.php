@@ -25,6 +25,7 @@
         <div class="list-group-item list-group-item-action d-flex gap-3 py-3">
             <h6 class="mb-0 opacity-75">Hier wird ein Python Skript angesprochen und der Input Wert +1 gerechnet.</h6>
             <form id="startseite_form_python" action="./view/pythonwrapper.php" method="get" aria-label="Python in PHP aufrufen." aria-description="Form um ein Python Skript zu testen">
+                <br>
                 <input type="number" name="value" value="1" />
                 <input type="submit" class="btn btn-primary" name="operation" value="add1" />
             </form>
@@ -34,6 +35,7 @@
             <p class="mb-0 opacity-75">
 
             <form id="startseite_form_python_int2bin" action="./view/pythonwrapper.php" method="get" aria-label="Python in PHP aufrufen." aria-description="Form um ein Python Skript auszuführen.">
+                <br>
                 <input type="number" name="value" value="1" />
                 <input type="submit" class="btn btn-primary" name="operation" value="dec2bin" />
             </form>
